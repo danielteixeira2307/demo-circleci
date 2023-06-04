@@ -183,7 +183,7 @@ jobs:
     steps:
       - checkout
       - add_ssh_keys:
-          fingerprints: ["27:a9:6d:58:e8:f2:78:ba:b3:9d:9d:dd:97:74:fe:49"]
+          fingerprints: ["ed:3a:a0:59:60:8b:06:7f:02:f4:d7:6a:63:ff:6c:27"]
       # attach workspace
       - attach_workspace:
           at: ~/
@@ -263,16 +263,16 @@ jobs:
         environment:
           ENVIRONMENT: "production"
           TYPEORM_CONNECTION: postgres
-          TYPEORM_HOST: database-1.chngvdiars6k.us-east-1.rds.amazonaws.com
+          TYPEORM_HOST: database-1.crxy0cbhkjib.us-east-1.rds.amazonaws.com
           TYPEORM_USERNAME: postgres
-          TYPEORM_PASSWORD: mypassword!!
+          TYPEORM_PASSWORD: mypassword
           TYPEORM_DATABASE: udapeople
           TYPEORM_PORT: 5432
           TYPEORM_ENTITIES: ./modules/domain/**/*.entity{.ts,.js}       
     steps:
       - checkout
       - add_ssh_keys:
-          fingerprints: ["27:a9:6d:58:e8:f2:78:ba:b3:9d:9d:dd:97:74:fe:49"]
+          fingerprints: ["ed:3a:a0:59:60:8b:06:7f:02:f4:d7:6a:63:ff:6c:27"]
       # attach workspace
       - attach_workspace:
           at: ~/      
