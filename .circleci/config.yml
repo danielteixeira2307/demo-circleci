@@ -261,7 +261,7 @@ jobs:
     docker:
       - image: python:3.7-alpine3.11
         environment:
-          ENVIRONMENT: "production"
+          #ENVIRONMENT: "production"
           TYPEORM_CONNECTION: postgres
           TYPEORM_HOST: database-1.crxy0cbhkjib.us-east-1.rds.amazonaws.com
           TYPEORM_USERNAME: postgres
