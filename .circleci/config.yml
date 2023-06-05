@@ -260,15 +260,25 @@ jobs:
   deploy-backend:
     docker:
       - image: python:3.7-alpine3.11
-        environment:
+        #environment:
           #ENVIRONMENT: "production"
-          TYPEORM_CONNECTION: postgres
-          TYPEORM_HOST: database-1.crxy0cbhkjib.us-east-1.rds.amazonaws.com
-          TYPEORM_USERNAME: postgres
-          TYPEORM_PASSWORD: mypassword
-          TYPEORM_DATABASE: udapeople
+         # TYPEORM_CONNECTION: postgres
+         # TYPEORM_HOST: database-1.crxy0cbhkjib.us-east-1.rds.amazonaws.com
+         # TYPEORM_USERNAME: postgres
+         # TYPEORM_PASSWORD: mypassword
+         # TYPEORM_DATABASE: udapeople
+         # TYPEORM_PORT: 5432
+         # TYPEORM_ENTITIES: ./src/modules/domain/**/*.entity{.ts,.js}
+        environment:
+          TYPEORM_CONNECTION: '{{ lookup(''env'', ''TYPEORM_CONNECTION'')}}'
+          TYPEORM_ENTITIES: '{{ lookup(''env'', ''TYPEORM_ENTITIES'')}}'
+          TYPEORM_HOST: '{{ lookup(''env'', ''TYPEORM_HOST'')}}'
           TYPEORM_PORT: 5432
-          TYPEORM_ENTITIES: ./src/modules/domain/**/*.entity{.ts,.js}       
+          TYPEORM_USERNAME: '{{ lookup(''env'', ''TYPEORM_USERNAME'')}}'
+          TYPEORM_PASSWORD: '{{ lookup(''env'', ''TYPEORM_PASSWORD'')}}'
+          TYPEORM_DATABASE: '{{ lookup(''env'', ''TYPEORM_DATABASE'')}}'
+          TYPEORM_MIGRATIONS: '{{ lookup(''env'', ''TYPEORM_MIGRATIONS'')}}'
+          TYPEORM_MIGRATIONS_DIR: '{{ lookup(''env'', ''TYPEORM_MIGRATIONS_DIR'')}}'     
     steps:
       - checkout
       - add_ssh_keys:
