@@ -260,15 +260,15 @@ jobs:
   deploy-backend:
     docker:
       - image: python:3.7-alpine3.11
-        #environment:
+        environment:
           #ENVIRONMENT: "production"
-        #  TYPEORM_CONNECTION: postgres
-        #  TYPEORM_HOST: database-1.crxy0cbhkjib.us-east-1.rds.amazonaws.com
-        #  TYPEORM_USERNAME: postgres
-        #  TYPEORM_PASSWORD: mypassword
-        #  TYPEORM_DATABASE: udapeople
-        #  TYPEORM_PORT: 5432
-        #  TYPEORM_ENTITIES: ./modules/domain/**/*.entity{.ts,.js}       
+          TYPEORM_CONNECTION: postgres
+          TYPEORM_HOST: database-1.crxy0cbhkjib.us-east-1.rds.amazonaws.com
+          TYPEORM_USERNAME: postgres
+          TYPEORM_PASSWORD: mypassword
+          TYPEORM_DATABASE: udapeople
+          TYPEORM_PORT: 5432
+          TYPEORM_ENTITIES: ./src/modules/domain/**/*.entity{.ts,.js}       
     steps:
       - checkout
       - add_ssh_keys:
