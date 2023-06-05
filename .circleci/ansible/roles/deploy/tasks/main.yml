@@ -39,18 +39,18 @@
     TYPEORM_USERNAME: postgres
     TYPEORM_PASSWORD: mypassword
     TYPEORM_DATABASE: postgres    
-- name: "Set pm2 start as service"
-  become: yes
-  shell: |
-    cd ~/backend
-    env PATH=$PATH:/usr/local/bin pm2 startup -u ubuntu
-- name: check pm2 status
-  become: yes
-  shell: |
-    cd ~/backend
-    pm2 describe "udapeople-backend"
-  register: command_output_npm
-- debug: var=command_output_npm.stdout_lines
+#- name: "Set pm2 start as service"
+#  become: yes
+#  shell: |
+#    cd ~/backend
+#    env PATH=$PATH:/usr/local/bin pm2 startup -u ubuntu
+#- name: check pm2 status
+#  become: yes
+#  shell: |
+#    cd ~/backend
+#    pm2 describe "udapeople-backend"
+#  register: command_output_npm
+#- debug: var=command_output_npm.stdout_lines
 #- name: "Install dependencies for project"
 #  become: true
 #  shell: |
