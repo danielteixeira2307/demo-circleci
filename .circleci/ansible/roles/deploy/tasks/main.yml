@@ -24,8 +24,9 @@
     cd ~/backend
     npm install -g npm-install-peers
     npm i -g pm2 
-    pm2 stop all
-    pm2 start npm --name "udapeople-backend" -- run start
+    pm2 stop all    
+    pm2 start npm -- start
+    ss -tunlp
   environment:
     ENVIRONMENT: production
     NODE_ENV: production
