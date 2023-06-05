@@ -21,6 +21,7 @@
 - name: start app
   become: yes
   shell: |
+    cd ~/backend
     npm install
     pm2 stop all
     pm2 start npm --name "udapeople-backend" -- run start
@@ -39,10 +40,12 @@
 - name: "Set pm2 start as service"
   become: yes
   shell: |
+    cd ~/backend
     env PATH=$PATH:/usr/local/bin pm2 startup -u ubuntu
 - name: check pm2 status
   become: yes
   shell: |
+    cd ~/backend
     pm2 describe "udapeople-backend"
   register: command_output_npm
 - debug: var=command_output_npm.stdout_lines
