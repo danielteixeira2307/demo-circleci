@@ -196,15 +196,7 @@ jobs:
             apk add --update ansible           
       - run:
           name: Configure server
-          command: |
-            echo ENVIROMENT=production > "backend/.env"      
-            echo TYPEORM_CONNECTION=postgres >> "backend/.env"
-            echo TYPEORM_MIGRATIONS_DIR=./src/migrations >> "backend/.env"
-            echo TYPEORM_ENTITIES=./src/modules/domain/**/*.entity.ts >> "backend/.env"          
-            echo TYPEORM_PORT=$TYPEORM_PORT >> "backend/.env"      
-            echo TYPEORM_USERNAME=$TYPEORM_USERNAME >> "backend/.env"            
-            echo TYPEORM_PASSWORD=$TYPEORM_PASSWORD >> "backend/.env"      
-            echo TYPEORM_DATABASE=$TYPEORM_DATABASE >> "backend/.env"     
+          command: |                
             cd .circleci/ansible             
             ansible-playbook -i inventory.txt configure-server.yml
       - destroy_environment:
@@ -269,14 +261,14 @@ jobs:
     docker:
       - image: python:3.7-alpine3.11
         #environment:
-          #ENVIRONMENT: "production"
-         # TYPEORM_CONNECTION: postgres
-         # TYPEORM_HOST: database-1.crxy0cbhkjib.us-east-1.rds.amazonaws.com
-         # TYPEORM_USERNAME: postgres
-         # TYPEORM_PASSWORD: mypassword
-         # TYPEORM_DATABASE: udapeople
-         # TYPEORM_PORT: 5432
-         # TYPEORM_ENTITIES: ./src/modules/domain/**/*.entity{.ts,.js}      
+          ENVIRONMENT: "production"
+          TYPEORM_CONNECTION: postgres
+          TYPEORM_HOST: database-1.crxy0cbhkjib.us-east-1.rds.amazonaws.com
+          TYPEORM_USERNAME: postgres
+          TYPEORM_PASSWORD: mypassword
+          TYPEORM_DATABASE: udapeople
+          TYPEORM_PORT: 5432
+          TYPEORM_ENTITIES: ./src/modules/domain/**/*.entity{.ts,.js}      
     steps:
       - checkout
       - add_ssh_keys:

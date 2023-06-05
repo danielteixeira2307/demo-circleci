@@ -18,27 +18,27 @@
     tar -xvf artifact.tar.gz
     ls .
     rm -rf artifact.tar.gz
-- name: start app
-  become: yes
-  shell: |
-    cd ~/backend
-    npm install -g npm-install-peers
-    npm i -g pm2 
-    pm2 stop all    
-    pm2 start npm -- start
-    ss -tunlp
-  environment:
-    ENVIRONMENT: production
-    NODE_ENV: production
-    TYPEORM_CONNECTION: postgres
-    TYPEORM_MIGRATIONS_DIR: ./src/migrations
-    TYPEORM_ENTITIES: ./src/modules/**/*.entity.ts
-    TYPEORM_MIGRATIONS: ./src/migrations/*.ts
-    TYPEORM_HOST: database-1.crxy0cbhkjib.us-east-1.rds.amazonaws.com
-    TYPEORM_PORT: 5432
-    TYPEORM_USERNAME: postgres
-    TYPEORM_PASSWORD: mypassword
-    TYPEORM_DATABASE: postgres    
+#- name: start app
+#  become: yes
+#  shell: |
+#    cd ~/backend
+#    npm install -g npm-install-peers
+#    npm i -g pm2 
+#    pm2 stop all    
+#    pm2 start npm -- start
+#    ss -tunlp
+  #environment:
+  #  ENVIRONMENT: production
+  #  NODE_ENV: production
+  #  TYPEORM_CONNECTION: postgres
+  #  TYPEORM_MIGRATIONS_DIR: ./src/migrations
+  #  TYPEORM_ENTITIES: ./src/modules/**/*.entity.ts
+  #  TYPEORM_MIGRATIONS: ./src/migrations/*.ts
+  #  TYPEORM_HOST: database-1.crxy0cbhkjib.us-east-1.rds.amazonaws.com
+  #  TYPEORM_PORT: 5432
+  #  TYPEORM_USERNAME: postgres
+  #  TYPEORM_PASSWORD: mypassword
+  #  TYPEORM_DATABASE: postgres    
 #- name: "Set pm2 start as service"
 #  become: yes
 #  shell: |
@@ -51,16 +51,16 @@
 #    pm2 describe "udapeople-backend"
 #  register: command_output_npm
 #- debug: var=command_output_npm.stdout_lines
-#- name: "Install dependencies for project"
-#  become: true
-#  shell: |
-#    cd ~/backend
-#    ls .
-#    npm install -g npm-install-peers
-#    npm i -g pm2   
-#- name: "start npm"
-#  become: true
-#  shell: |
-#    cd ~/backend
-#    pm2 start npm -- start > /dev/null
-#    sleep 30
+- name: "Install dependencies for project"
+  become: true
+  shell: |
+    cd ~/backend
+    ls .
+    npm install -g npm-install-peers
+    npm i -g pm2   
+- name: "start npm"
+  become: true
+  shell: |
+    cd ~/backend
+    pm2 start npm -- start > /dev/null
+    sleep 30
